@@ -105,6 +105,13 @@ let make = () => {
       ~initialState={title: "", body: "", userId: 0},
       (),
     );
+  let createWithoutForm = _ =>
+    CreatePost({
+      userId: 99,
+      title: "Create Without Form",
+      body: "Create Without Form",
+    })
+    ->send;
   <CreateForm.Provider value=form>
     <form
       onSubmit={
@@ -117,6 +124,9 @@ let make = () => {
       <FieldString field=StateLenses.Title label="Title" />
       <FieldString field=StateLenses.Body label="Body" />
       <input type_="submit" value="Submit" />
+      <button onClick=createWithoutForm>
+        "Create Post without Form"->React.string
+      </button>
       <section>
         {
           React.string(

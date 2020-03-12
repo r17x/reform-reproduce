@@ -161,6 +161,13 @@ function Form(Props) {
                   }]));
           return ;
         }), undefined, undefined, /* OnDemand */1, /* () */0);
+  var createWithoutForm = function (param) {
+    return Curry._1(send, /* CreatePost */Block.__(0, [{
+                    userId: 99,
+                    title: "Create Without Form",
+                    body: "Create Without Form"
+                  }]));
+  };
   return React.createElement(CreateForm.Provider.make, Curry._3(CreateForm.Provider.makeProps, form, React.createElement("form", {
                       onSubmit: (function (e) {
                           e.preventDefault();
@@ -178,7 +185,9 @@ function Form(Props) {
                         }), React.createElement("input", {
                           type: "submit",
                           value: "Submit"
-                        }), React.createElement("section", undefined, "Form state:" + JSON.stringify(API$ReformReproduce.Posts.t_encode({
+                        }), React.createElement("button", {
+                          onClick: createWithoutForm
+                        }, "Create Post without Form"), React.createElement("section", undefined, "Form state:" + JSON.stringify(API$ReformReproduce.Posts.t_encode({
                                   userId: form.state.values.userId,
                                   title: form.state.values.title,
                                   body: form.state.values.body
